@@ -38,7 +38,7 @@ function App() {
             <button onClick={searchWeather}>Search</button>
           </div>
           <div>
-            <img src={weather.current.condition.icon} />
+            <img src={weather.current.condition.icon} alt={weather.current.condition.text} />
             <h1>{weather.location.name}</h1>
             <h2>{weather.location.region}</h2>
             <h3>{weather.current.temp_c}&#8451;</h3>
