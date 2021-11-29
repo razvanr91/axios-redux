@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
+
+  const counter = useSelector(state => state.counter);
+  const signedStatus = useSelector(state => state.isLogged);
+  const dispatch = useDispatch();
+
   const [weather, setWeather] = useState(null);
   const [input, setInput] = useState("");
   useEffect(() => {
@@ -34,6 +40,10 @@ function App() {
       {weather && (
         <div>
           <div>
+            <h1>Counter = {counter}</h1>
+            <button onClick={() => dispatch({ type: "INCREMENT" })} >Increment</button>
+            <h1>{signedStatus ? "TRUE" : "FALSE"}</h1>
+            <button onClick={() => dispatch({ type: "SIGN_IN" })} >Sign in status</button>
             <input onChange={weatherInput} type="texg" />
             <button onClick={searchWeather}>Search</button>
           </div>
